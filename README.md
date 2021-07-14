@@ -8,4 +8,4 @@ It ouputs a json file compatible with [f6tools](https://github.com/everything821
 ##  Oustanding issues
 - Decompression algorithm necessary for the game to operate with the recompressed data is not added to the rom.
 - Rom checksum is not updated.
-- A rust version is being worked on that will fix the checksum and add the decompression algorithm.
+- A [rust version](https://github.com/snaphat/ff6recompress-rs) is being worked on that will fix the checksum and add the decompression algorithm.
