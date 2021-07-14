@@ -20,8 +20,5 @@ obj/apultra.o: apultra
 	strip --strip-symbol main apultra.o
 	mv *.o obj
 
-apultra:
-	git clone -q https://github.com/emmanuel-marty/apultra.git
-
 clean:
-	@rm -rf $(APP) $(APP).exe obj apultra
+	@rm -rf $(APP) $(APP).exe obj
