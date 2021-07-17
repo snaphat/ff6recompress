@@ -26,7 +26,6 @@ auto unpack_lzss(auto input) {
     auto src = input;
     u8vec dest;
     uint64 s = 0; // source pointer
-    uint64 d = 0; // destination pointer
     uint8 buffer[0x800] = {0};
     auto b = 0x07DE;
     uint8 line[34];
@@ -62,12 +61,11 @@ auto unpack_lzss(auto input) {
             }
             // copy this pass to the destination buffer
             dest.insert(dest.end(), line, line+l);
-            d += l;
 
             // reached end of compressed data
             if (s >= length) break;
         }
     }
 
-    return make_tuple(move(dest), (uint64)s);
+    return make_tuple(move(dest), (uint64)length);
 }
