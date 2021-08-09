@@ -1,3 +1,5 @@
 *.json
 *.sfc
 *.smc
+*.o
+*.exe

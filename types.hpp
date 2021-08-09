@@ -4,7 +4,6 @@
 #include <iostream>
 #include <list>
 #include <tuple>
-#include <ranges>
 #include <sstream>
 #include <vector>
 #include <unordered_map>

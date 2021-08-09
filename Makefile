@@ -1,6 +1,6 @@
 
 CC=g++
-CFLAGS= -O3 -g -std=c++20 -fomit-frame-pointer -Iapultra/src/libdivsufsort/include -Iapultra/src
+CFLAGS= -O3 -g -std=c++2a -fomit-frame-pointer -Iapultra/src/libdivsufsort/include -Iapultra/src
 LDFLAGS=
 MKDIR=$(shell which mkdir)
 
