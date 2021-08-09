@@ -5,18 +5,22 @@
 auto pack_aplib(u8vec& input, auto window_size) -> u8vec {
     /* Allocate max compressed size */
     auto csize = apultra_get_max_compressed_size(input.size());
-    u8vec output(csize);
-    //output[0] = 0xFF;
-    //output[1] = 0xFF;
-    auto size = apultra_compress(&input[0], &output[0], input.size(), csize, 0, window_size, 0, NULL, NULL);
-    output.resize(size);
+    u8vec output(csize+2);
+    output[0] = 0xFF;
+    output[1] = 0xFF;
+    auto size = apultra_compress(&input[0], &output[2], input.size(), csize, 0, window_size, 0, NULL, NULL);
+    output.resize(size+2);
     return output;
 }
 
 auto unpack_aplib(u8vec& input) -> u8vec {
-    auto dsize = apultra_get_max_decompressed_size(&input[0], input.size(), 0);
+    if (input[0] != 0xFF || input[1] != 0xFF) {
+        u8vec output(0);
+        return output;
+    }
+    auto dsize = apultra_get_max_decompressed_size(&input[2], input.size(), 0);
     u8vec output(dsize);
-    auto size = apultra_decompress(&input[0], &output[0], input.size(), dsize, 0, 0);
+    auto size = apultra_decompress(&input[2], &output[0], input.size(), dsize, 0, 0);
     output.resize(size);
     return output;
 }
